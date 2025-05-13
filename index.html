@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/global.css">
+    <script src="index.js" defer type="module"></script>
+    <title>Descubre Europa</title>
+</head>
+
+<body>
+    <header>
+        <h1>Descubre Europa</h1>
+    </header>
+
+    <main>
+        <section class="buttons-container">
+            <div id="explore-section">
+                <button id="explore-btn">Explora</button>
+                <img src="/media/images/plane-world.jpg" alt="avión alrededor del mundo">
+            </div>
+
+            <div id="visit-section">
+                <button id="countries-visit">Países visitados</button>
+                <img src="/media/images/icons-europe.jpg" alt="Mapa de Europa con imagen de un monumento en cada país">
+            </div>
+        </section>
+
+
+        <div id="info-card"></div>
+
+
+        <div id="info-city" class="hidden">
+            <p>información de interés</p>
+            <p>mapa<a href="${element.maps.googleMaps}" target="_blank">Ver en Google Maps</a></p>
+        </div>
+
+        <div id="info-countries" class="hidden">
+            <p>Comidas</p>
+            <p>Alojamientos</p>
+            <p>Lugares de interés</p>
+        </div>
+
+        <div id="container-country-card" style="display: none;"></div>
+
+        <section id="forms-container">
+            <div id="form-container" class="form-container">
+                <h3 id="register">Registro</h3>
+                <div class="form-section">
+                    <form id="form">
+                        <div class="form-group">
+                            <label for="name">Nombre:</label>
+                            <input type="text" id="name" name="name" required placeholder="Enter your name" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required placeholder="email@example.com" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="password">Contraseña:</label>
+                            <input type="password" id="register-password" name="password" required minlength="8"
+                                placeholder="Mínimo 8 caracteres" />
+                        </div>
+
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="policy" name="policy" required />
+                            <label for="policy" id="policy">
+                                Estoy de acuerdo con
+                                <a href="#" class="policy-link">la Politica de Privacidad</a>
+                            </label>
+                        </div>
+
+                        <button type="submit" id="send" class="submit-btn">
+                            <span class="btn-text">Enviar</span>
+                            <span class="btn-icon">→</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+
+            <div id="login-form-container" class="login-form-container">
+                <form id="login-form" class="login-form">
+                    <h2>Iniciar Sesión</h2>
+                    <label for="email-login" id="login-label">Email:</label>
+                    <input type="email" id="email-login" name="email" required placeholder="Enter your email" />
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password-login" name="password" required
+                        placeholder="Enter your password" />
+                    <button type="submit" class="btn-login-form">Enviar</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- <button id="back-btn">Volver al listado</button>
+    
+    <button id="next-btn">Página siguiente</button>
+    <button id="previous-btn">Página anterior</button> -->
+</body>
+
+</html>
