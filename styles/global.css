@@ -42,7 +42,7 @@ main {
 }
 
 #explore-btn,
-#countries-visit {
+#visited-btn {
     background-color: #0f8088;
     color: white;
     border: none;
@@ -54,7 +54,7 @@ main {
 }
 
 #explore-btn:hover,
-#countries-visit:hover {
+#visited-btn:hover {
     background-color:#ac4caf;
 }
 
@@ -89,6 +89,7 @@ main {
 
 
 .country-card {
+    cursor: pointer;
     background-color: white;
     border: 1px solid #ddd;
     border-radius: 8px;

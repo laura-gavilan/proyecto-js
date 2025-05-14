@@ -1,4 +1,34 @@
+import { getAllCountriesFromApi } from "../index.js";
+
+/**
+ * Páginas posibles:
+ * explora
+ * visited
+ * country-details
+ */
+
+export let ACTUAL_PAGE = "explora";
+
 export const container = document.getElementById("container-country-card");
+const exploreBtn = document.getElementById("explore-btn");
+const visitedBtn = document.getElementById("visited-btn");
+
+exploreBtn.addEventListener("click", async () => {
+    // Coger todos los paises, y luego llamar a renderCountries
+    console.log("EXPLORA");
+
+    const allCountries = JSON.parse(localStorage.getItem("all-countries"));
+    ACTUAL_PAGE = "explora";
+    renderCountries(allCountries);
+});
+
+visitedBtn.addEventListener("click", () => {
+    // Coger todos los paises visitados, y luego llamar a renderCountries
+    console.log("PAISES VISITADOS");
+    let visited = JSON.parse(localStorage.getItem("visitedCountries")) || [];
+    ACTUAL_PAGE = "visited";
+    renderCountries(visited);
+});
 
 export const dataCity = (cities) => {
     const infoCardCity = document.getElementById("info-city");
@@ -14,17 +44,24 @@ export const dataCity = (cities) => {
         cityCard.appendChild(nameCity);
 
         infoCardCity.appendChild(cityCard);
-    })
-}
-
+    });
+};
 
 export const renderCountries = (countries) => {
-    const infoCard = document.getElementById("info-card");
-    infoCard.innerHTML = "";
+    const allCountryContainer = document.getElementById("container-country-card");
+    allCountryContainer.innerHTML = "";
+
+    const visited = JSON.parse(localStorage.getItem("visitedCountries")) || [];
 
     countries.forEach((country) => {
+        const isVisited = visited.find((element) => element.cioc === country.cioc);
+
         const countryCard = document.createElement("div");
         countryCard.classList.add("country-card");
+
+        countryCard.addEventListener("click", () => {
+            renderCountryDetails(country);
+        });
 
         const name = document.createElement("p");
         name.textContent = country.name.common;
@@ -34,69 +71,57 @@ export const renderCountries = (countries) => {
         flag.alt = `Bandera de ${country.name.common}`;
 
         const button = document.createElement("button");
-        button.textContent = "Visitado";
+        button.textContent = isVisited ? "Eliminar como Visitado" : "Marcar como visitado";
 
-        button.addEventListener("click", () => {
-            button.classList.toggle("visited");
-            button.textContent = button.classList.contains("visited") ? "Visitado" : "Marcar como Visitado";
-
+        button.addEventListener("click", (event) => {
             let visited = JSON.parse(localStorage.getItem("visitedCountries")) || [];
+            const isVisited = visited.find((element) => element.cioc === country.cioc);
 
-            const existVisited = visited.find(element => element.cioc === country.cioc);
-            
-            if (!existVisited) {
+            if (!isVisited) {
                 visited.push(country);
+                event.target.textContent = "Eliminar como Visitado";
             } else {
-
-                visited = visited.filter(visitedCountry => visitedCountry.cioc !== country.cioc);
+                visited = visited.filter((visitedCountry) => visitedCountry.cioc !== country.cioc);
+                event.target.textContent = "Marcar como visitado";
+                if (ACTUAL_PAGE === "visited") {
+                    renderCountries(visited);
+                }
             }
 
             localStorage.setItem("visitedCountries", JSON.stringify(visited));
-            renderCountries(visited);
         });
-
 
         countryCard.appendChild(name);
         countryCard.appendChild(flag);
         countryCard.appendChild(button);
-
         container.appendChild(countryCard);
-
-
-        countryCard.addEventListener("click", () => {
-            const infoCity = document.getElementById("info-city");
-            const infoCountries = document.getElementById("info-countries");
-
-            infoCity.classList.toggle("visible");
-            infoCity.classList.toggle("hidden");
-
-            infoCountries.classList.toggle("visible");
-            infoCountries.classList.toggle("hidden");
-        });
     });
 };
 
-const visitBtn = document.getElementById("countries-visit");
+const renderCountryDetails = (country) => {
+    const paginaDeLaQueVieneElUSuario = ACTUAL_PAGE;
 
-visitBtn.addEventListener("click", () => {
-    const visited = JSON.parse(localStorage.getItem("visitedCountries")) || [];
+    ACTUAL_PAGE = "country-details";
 
-    const container = document.getElementById("container-country-card");
-    container.innerHTML = "";
-    container.style.display = "grid";
+    const allCountryContainer = document.getElementById("container-country-card");
+    allCountryContainer.innerHTML = "";
 
-    renderCountries(visited);
-    // visited.forEach((country) => {
-    //     const countryCard = document.createElement("div");
-    //     countryCard.classList.add("country-card");
+    const buttonGoBack = document.createElement("button");
+    buttonGoBack.textContent = "Volver atrás";
+    buttonGoBack.addEventListener("click", () => {
+        if (paginaDeLaQueVieneElUSuario === "explora") {
+            exploreBtn.click();
+        }
 
-    //     const name = document.createElement("p");
-    //     name.textContent = country.name.common;
+        if (paginaDeLaQueVieneElUSuario === "visited") {
+            visitedBtn.click();
+        }
+    });
 
-    //     countryCard.appendChild(name);
-    //     container.appendChild(countryCard);
-    // });
-});
+    allCountryContainer.prepend(buttonGoBack);
 
+    console.log(country.name.common);
 
-// history.back() para crear botón hacia atrás
+    const map = country.maps.googleMaps;
+    console.log(map);
+};
