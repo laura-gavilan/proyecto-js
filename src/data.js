@@ -1,3 +1,4 @@
+import { createCardCountry } from "../country-info.js";
 import { getAllCountriesFromApi } from "../index.js";
 
 /**
@@ -12,6 +13,7 @@ export let ACTUAL_PAGE = "explora";
 export const container = document.getElementById("container-country-card");
 const exploreBtn = document.getElementById("explore-btn");
 const visitedBtn = document.getElementById("visited-btn");
+
 
 exploreBtn.addEventListener("click", async () => {
     // Coger todos los paises, y luego llamar a renderCountries
@@ -104,8 +106,9 @@ const renderCountryDetails = (country) => {
     ACTUAL_PAGE = "country-details";
 
     const allCountryContainer = document.getElementById("container-country-card");
-    allCountryContainer.innerHTML = "";
+    allCountryContainer.innerHTML = ``;
 
+    
     const buttonGoBack = document.createElement("button");
     buttonGoBack.textContent = "Volver atrás";
     buttonGoBack.addEventListener("click", () => {
@@ -118,10 +121,9 @@ const renderCountryDetails = (country) => {
         }
     });
 
-    allCountryContainer.prepend(buttonGoBack);
-
-    console.log(country.name.common);
-
-    const map = country.maps.googleMaps;
-    console.log(map);
+    
+    allCountryContainer.appendChild(buttonGoBack);
+    createCardCountry(country);
 };
+
+
