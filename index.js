@@ -23,8 +23,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const allCountries = await getAllCountriesFromApi();
 
     // Guardo una copia de todos los paises, para no tener que repetir la información
-    // Y para hacer que la lectura se mas rápida.
+    // Y para hacer que la lectura sea mas rápida.
     localStorage.setItem("all-countries", JSON.stringify(allCountries));
 
-    renderCountries(allCountries);
+    // renderCountries(allCountries); La quito porque no quiereo renderizar los países al comienzo.
 });

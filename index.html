@@ -28,9 +28,7 @@
         </section>
 
 
-        <!-- <div id="info-city" class="hidden">
-            <p>mapa<a href="${element.maps.googleMaps}" target="_blank">Ver en Google Maps</a></p>
-        </div> -->
+
 
         <div id="info-countries" class="hidden">
             <p>Comidas</p>
@@ -39,6 +37,7 @@
         </div>
 
         <div id="container-country-card"></div>
+        <div id="container-details-card"></div>
 
         <section id="forms-container">
             <div id="form-container" class="form-container">
@@ -57,13 +56,13 @@
 
                         <div class="form-group">
                             <label for="password">Contraseña:</label>
-                            <input type="password" id="register-password" name="password" required minlength="8"
+                            <input type="password" id="password" name="password" required minlength="8"
                                 placeholder="Mínimo 8 caracteres" />
                         </div>
 
                         <div class="checkbox-group">
                             <input type="checkbox" id="policy" name="policy" required />
-                            <label for="policy" id="policy">
+                            <label for="policy">
                                 Estoy de acuerdo con
                                 <a href="#" class="policy-link">la Politica de Privacidad</a>
                             </label>
@@ -73,6 +72,8 @@
                             <span class="btn-text">Enviar</span>
                             <span class="btn-icon">→</span>
                         </button>
+
+                        <button id="btn-login"></button>
                     </form>
                 </div>
             </div>
@@ -83,13 +84,14 @@
                     <h2>Iniciar Sesión</h2>
                     <label for="email-login" id="login-label">Email:</label>
                     <input type="email" id="email-login" name="email" required placeholder="Enter your email" />
-                    <label for="password">Contraseña:</label>
+                    <label for="password-login">Contraseña:</label>
                     <input type="password" id="password-login" name="password" required
                         placeholder="Enter your password" />
                     <button type="submit" class="btn-login-form">Enviar</button>
                 </form>
             </div>
         </section>
+        <!-- <button id="logout-btn">Cerrar sesión</button> -->
 
     </main>
 </body>

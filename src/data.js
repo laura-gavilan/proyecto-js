@@ -73,7 +73,7 @@ export const renderCountries = (countries) => {
         flag.alt = `Bandera de ${country.name.common}`;
 
         const button = document.createElement("button");
-        button.textContent = isVisited ? "Eliminar como Visitado" : "Marcar como visitado";
+        button.textContent = isVisited ? "No Visitado" : "Visitado";
 
         button.addEventListener("click", (event) => {
             let visited = JSON.parse(localStorage.getItem("visitedCountries")) || [];
@@ -98,6 +98,9 @@ export const renderCountries = (countries) => {
         countryCard.appendChild(button);
         container.appendChild(countryCard);
     });
+
+    const formContainer = document.getElementById("forms-container");
+    formContainer.style.display = 'none';
 };
 
 const renderCountryDetails = (country) => {
@@ -108,7 +111,7 @@ const renderCountryDetails = (country) => {
     const allCountryContainer = document.getElementById("container-country-card");
     allCountryContainer.innerHTML = ``;
 
-    
+
     const buttonGoBack = document.createElement("button");
     buttonGoBack.textContent = "Volver atrás";
     buttonGoBack.addEventListener("click", () => {
@@ -119,11 +122,18 @@ const renderCountryDetails = (country) => {
         if (paginaDeLaQueVieneElUSuario === "visited") {
             visitedBtn.click();
         }
+
+        const containerCountryCard = document.getElementById("container-details-card");
+        containerCountryCard.style.display = "none";
     });
 
-    
+
     allCountryContainer.appendChild(buttonGoBack);
     createCardCountry(country);
 };
+
+const formContainer = document.getElementById("forms-container");
+formContainer.style.display = 'flex';
+
 
 

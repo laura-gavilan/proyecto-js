@@ -1,18 +1,20 @@
 export const createCardCountry = (country) => {
+    const containerCountryCard = document.getElementById("container-details-card");
+    containerCountryCard.style.display = "flex";
+    containerCountryCard.innerHTML = `
+        <p>${country.name.common.toUpperCase()}</p>
+        <p>${country.maps.googleMaps}</p>
+    `;
+
     const cardInfo = document.createElement("div");
     cardInfo.classList.add("card-info");
 
-    const title = document.createElement("h2");
-    title.textContent = `PAÍS: ${country.name.common}`;
-    cardInfo.appendChild(title);
-
-
     const foodCountry = document.createElement("p");
-    foodCountry.textContent = "COMIDAS";
+    foodCountry.textContent = "RESTAURANTS";
     foodCountry.classList.add("food-filter");
 
     foodCountry.addEventListener("click", () => {
-        const countryName = encodeURIComponent(country.name.common); //se codifica el nombre del país para que sea seguro en una URL
+        const countryName = encodeURIComponent(country.name.common); //se codifica el nombre del país para que sea seguro en una URL. Si tiene letras diferentes o acentos pueda leerlo.
         const urlFood = `https://www.tripadvisor.com/Search?q=restaurants+in+${countryName}`;
         window.open(urlFood);
     });
@@ -21,7 +23,7 @@ export const createCardCountry = (country) => {
 
 
     const hotelCountry = document.createElement("p");
-    hotelCountry.textContent = "ALOJAMIENTOS";
+    hotelCountry.textContent = "HOTELS";
     hotelCountry.classList.add("hotel-filter");
 
     hotelCountry.addEventListener("click", () => {
@@ -32,8 +34,8 @@ export const createCardCountry = (country) => {
 
     cardInfo.appendChild(hotelCountry);
 
-    const placesInterestCountry = document.createElement("div");
-    placesInterestCountry.textContent = "LUGARES DE INTERÉS";
+    const placesInterestCountry = document.createElement("p");
+    placesInterestCountry.textContent = "PLACES";
 
     placesInterestCountry.addEventListener("click", () => {
         const countryName = encodeURIComponent(country.name.common);
@@ -43,6 +45,9 @@ export const createCardCountry = (country) => {
 
     cardInfo.appendChild(placesInterestCountry);
 
-    const allCountryContainer = document.getElementById("container-country-card");
-    allCountryContainer.appendChild(cardInfo);
+    containerCountryCard.appendChild(cardInfo);
 };
+
+
+const formContainer = document.getElementById("forms-container");
+formContainer.style.display = 'none';
