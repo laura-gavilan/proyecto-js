@@ -130,23 +130,16 @@ main {
 }
 
 
-.card-info {
+.category-container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    gap: 30px;
-    padding: 0 14px;
-    margin-top: 42px;
-    margin-bottom: 70px;
-    width: 100%;
-    cursor: pointer;
+    gap: 60px;
+    margin-top: 20px;
 }
 
-.card-info p {
-    border: 1px solid blue;
-    border-radius: 8px;
-    padding: 14px;
+.category-container p {
+    cursor: pointer;
+    font-weight: bold;
+    margin: 5px 0;
 }
 
 
@@ -154,6 +147,40 @@ main {
     display: none;
 }
 
+.restaurant-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.restaurant-card {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 12px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.restaurant-card p {
+    margin: 4px 0;
+}
+
+.places-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 10px;
+}
+
+.place-card {
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+    padding: 12px;
+    background-color: #f6f6f6;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.06);
+}
 
 button {
     background-color: #f0f0f0b9;
