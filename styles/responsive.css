@@ -1,0 +1,87 @@
+/* Tablets (≤ 900px) */
+@media screen and (max-width: 900px) {
+    .buttons-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 30px;
+    }
+
+    .category-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    #container-country-card {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .form-container,
+    .login-form-container {
+        width: 90%;
+    }
+
+    .restaurant-grid,
+    .hotel-grid,
+    .places-grid {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+}
+
+/* Móviles (≤ 600px) */
+@media screen and (max-width: 600px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    #explore-btn,
+    #visited-btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+
+    #explore-section img,
+    #visit-section img {
+        width: 100px;
+    }
+
+    .country-card {
+        padding: 15px;
+    }
+
+    .country-card p {
+        font-size: 1rem;
+    }
+
+    .restaurant-grid,
+    .hotel-grid,
+    .places-grid {
+        grid-template-columns: 1fr;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+        font-size: 0.95rem;
+        padding: 10px;
+    }
+
+    .submit-btn,
+    .btn-login-form {
+        font-size: 1rem;
+        padding: 12px;
+    }
+
+    #container-details-card p {
+        font-size: 1.2rem;
+    }
+
+    #logout-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .buttons-container {
+        gap: 20px;
+    }
+}
