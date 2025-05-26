@@ -15,100 +15,99 @@ export const createCardCountry = (country) => {
     foodCountry.textContent = "RESTAURANTS";
     foodCountry.classList.add("food-filter");
 
-    foodCountry.addEventListener("click", () => {
-        if (foodCountry.querySelector(".restaurant-grid")) return;
-
-        const container = document.createElement("div");
-        container.classList.add("restaurant-grid");
-
-        for (let i = 0; i < 5; i++) {
-            const div = document.createElement("div");
-            div.classList.add("restaurant-card");
-
-            div.innerHTML = `
-            <p>Restaurante ${i + 1}</p>
-            <p>Información del restaurante ${i + 1}</p>
-            <p>Valoración del restaurante ${i + 1}</p>
-            `;
-
-            container.appendChild(div);
-        }
-
-        foodCountry.appendChild(container);
-    });
-
-    containerCountryCard.appendChild(foodCountry);
-
-
     const hotelCountry = document.createElement("p");
     hotelCountry.textContent = "HOTELS";
     hotelCountry.classList.add("hotel-filter");
-
-    hotelCountry.addEventListener("click", () => {
-        // Evitar duplicados
-        if (hotelCountry.querySelector(".hotel-grid")) return;
-
-        const container = document.createElement("div");
-        container.classList.add("hotel-grid");
-
-        for (let i = 0; i < 10; i++) {
-            const div = document.createElement("div");
-            div.classList.add("hotel-card");
-
-            div.innerHTML = `
-            <p><strong>Hotel ${i + 1}</strong></p>
-            <p>Información del hotel ${i + 1}</p>
-            <p>Valoración del hotel ${i + 1}</p>
-        `;
-
-            container.appendChild(div);
-        }
-
-        hotelCountry.appendChild(container);
-    });
-
-    containerCountryCard.appendChild(hotelCountry);
-
 
     const placesInterestCountry = document.createElement("p");
     placesInterestCountry.textContent = "PLACES";
     placesInterestCountry.classList.add("places-filter");
 
-    placesInterestCountry.addEventListener("click", () => {
-        // Evitar duplicados
-        if (placesInterestCountry.querySelector(".places-grid")) return;
+    
+    foodCountry.addEventListener("click", () => {
+        const existingGrid = foodCountry.querySelector(".restaurant-grid");
+        if (existingGrid) {
+            existingGrid.remove();
+        } else {
+            const container = document.createElement("div");
+            container.classList.add("restaurant-grid");
 
-        const container = document.createElement("div");
-        container.classList.add("places-grid");
+            for (let i = 0; i < 3; i++) {
+                const div = document.createElement("div");
+                div.classList.add("restaurant-card");
 
-        for (let i = 0; i < 10; i++) {
-            const div = document.createElement("div");
-            div.classList.add("place-card");
+                div.innerHTML = `
+                    <p>Restaurante ${i + 1}</p>
+                    <p>Información del restaurante ${i + 1}</p>
+                    <p>Valoración del restaurante ${i + 1}</p>
+                `;
 
-            div.innerHTML = `
-            <p><strong>Lugar de interés ${i + 1}</strong></p>
-            <p>Descripción del lugar ${i + 1}</p>
-            <p>Valoración del lugar ${i + 1}</p>
-        `;
-            container.appendChild(div);
+                container.appendChild(div);
+            }
+
+            foodCountry.appendChild(container);
         }
-
-        placesInterestCountry.appendChild(container);
     });
 
-    containerCountryCard.appendChild(placesInterestCountry);
-    // Agregar los tres filtros al contenedor de categorías
+    
+    hotelCountry.addEventListener("click", () => {
+        const existingGrid = hotelCountry.querySelector(".hotel-grid");
+        if (existingGrid) {
+            existingGrid.remove();
+        } else {
+            const container = document.createElement("div");
+            container.classList.add("hotel-grid");
+
+            for (let i = 0; i < 3; i++) {
+                const div = document.createElement("div");
+                div.classList.add("hotel-card");
+
+                div.innerHTML = `
+                    <p><strong>Hotel ${i + 1}</strong></p>
+                    <p>Información del hotel ${i + 1}</p>
+                    <p>Valoración del hotel ${i + 1}</p>
+                `;
+                container.appendChild(div);
+            }
+
+            hotelCountry.appendChild(container);
+        }
+    });
+
+
+    placesInterestCountry.addEventListener("click", () => {
+        const existingGrid = placesInterestCountry.querySelector(".places-grid");
+        if (existingGrid) {
+            existingGrid.remove();
+        } else {
+            const container = document.createElement("div");
+            container.classList.add("places-grid");
+
+            for (let i = 0; i < 3; i++) {
+                const div = document.createElement("div");
+                div.classList.add("place-card");
+
+                div.innerHTML = `
+                    <p><strong>Lugar de interés ${i + 1}</strong></p>
+                    <p>Descripción del lugar ${i + 1}</p>
+                    <p>Valoración del lugar ${i + 1}</p>
+                `;
+                container.appendChild(div);
+            }
+
+            placesInterestCountry.appendChild(container);
+        }
+    });
+
     categoryContainer.appendChild(foodCountry);
     categoryContainer.appendChild(hotelCountry);
     categoryContainer.appendChild(placesInterestCountry);
 
-    // Agregar el contenedor de categorías al contenedor principal
     containerCountryCard.appendChild(categoryContainer);
 };
 
 const formContainer = document.getElementById("forms-container");
 formContainer.style.display = 'none';
-
 
 
 

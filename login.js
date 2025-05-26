@@ -29,7 +29,7 @@ const verifyLogin = (email, password) => {
 document.getElementById('form').addEventListener('submit', (event) => {
     event.preventDefault();
     const email = document.getElementById('email').value.trim().toLowerCase();
-    const password = document.getElementById('register-password').value.trim();
+    const password = document.getElementById('password').value.trim();
 
     console.log('Formulario registro enviado:', email, password);
     saveUser(email, password);
@@ -39,8 +39,8 @@ document.getElementById('form').addEventListener('submit', (event) => {
 
 document.getElementById('login-form').addEventListener('submit', (event) => {
     event.preventDefault();
-    const email = document.getElementById('email-login').valuetrim().toLowerCase();
-    const password = document.getElementById('password-login').value.trm();
+    const email = document.getElementById('email-login').value.trim().toLowerCase();
+    const password = document.getElementById('password-login').value.trim();
 
     console.log('Formulario login enviado:', email, password);
     verifyLogin(email, password);
